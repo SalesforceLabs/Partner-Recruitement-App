@@ -1,0 +1,3 @@
+<design:component label="Questionnaire">
+    <design:attribute name="flowId" label="Optional : Flow Data Id" description="Provide a Flow Data Record ID here to target a specific Flow Data for input.  This is optional and used only in specific scenarios."/>
+</design:component>

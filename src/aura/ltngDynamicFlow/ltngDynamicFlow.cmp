@@ -1,0 +1,16 @@
+<aura:component access="global" extends="c:ltngBase" implements="forceCommunity:availableForAllPageTypes" controller="DynamicFlowController">
+    <aura:dependency resource="c:ltngWizard" />
+    <!-- Global Attributes -->
+    <aura:attribute name="flowId" type="String" description="Flow Id" access="global" />
+    <!-- Private Attributes -->
+    <aura:attribute name="metadata" type="Object" description="Flow Metadata Object" />
+    <aura:attribute name="flowData" type="Object" description="Flow Metadata Object" />
+    <aura:attribute name="startPageKey" type="String" description="Start Page Key" />
+    <aura:attribute name="isInternalDetail" type="Boolean" default="false" />
+    <aura:attribute name="isComplete" type="Boolean" description="Has flow been completed" default="false" />
+    <aura:handler name="wizardCompleteEvent" event="c:ltngWizardCompleteEvent" action="{!c.handleWizardComplete}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:if isTrue="{! !empty(v.metadata)}">
+        <c:ltngWizard title="" pageMap="{!v.metadata}" startPage="{!v.startPageKey}" wizardData="{!v.flowData}" wizardSaveState="{!c.saveFlowState}"/>
+    </aura:if>
+</aura:component>

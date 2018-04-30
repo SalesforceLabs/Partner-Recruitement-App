@@ -1,0 +1,8 @@
+Dear {!Flow_Data__c.Lead_Name__c},
+
+Thank you for registering!  
+
+Please proceed with the questionnaire by clicking on the below link:
+{!Flow_Data__c.URL__c}
+
+Thank you.

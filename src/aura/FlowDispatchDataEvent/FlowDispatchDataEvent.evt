@@ -1,0 +1,7 @@
+<!--
+ - Created by tarren.anderson on 5/25/17.
+ -->
+
+<aura:event type="COMPONENT" description="FlowDispatchDataEvent">
+    <aura:attribute name="flowData" type="Object" />
+</aura:event>

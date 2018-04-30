@@ -1,0 +1,12 @@
+<!--
+ - Created by tarren.anderson on 6/15/17.
+ -->
+
+<aura:component description="ltngLabel">
+    <aura:attribute name="customLabelKey" type="String" />
+    <aura:attribute name="labelClass" type="String" />
+    <aura:attribute name="staticLabel" type="String" />
+    <aura:attribute name="labelValue" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <label class="{!v.labelClass}">{!v.labelValue}</label>
+</aura:component>

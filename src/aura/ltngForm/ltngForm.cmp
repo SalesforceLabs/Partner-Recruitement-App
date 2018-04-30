@@ -1,0 +1,46 @@
+<aura:component description="FormRenderer" implements="force:hasRecordId,flexipage:availableForAllPageTypes" access="global">
+    <aura:attribute name="formId" type="String" description="Form Object Id" access="global"/>
+    <aura:attribute name="formDataId" type="String" description="Form Data Object Id" access="global"  />
+    <aura:attribute name="flowDataId" type="String" description="Flow Data Id" access="global" />
+    <aura:attribute name="fc" type="Object" description="form metadata object"/>
+    <aura:attribute name="formData" type="Object" description="current state of form data in UI"/>
+    <aura:attribute name="dataProvider" type="Aura.Component" required="false" description="A list of data provider components" access="global" />
+    <aura:attribute name="errors" type="Object" description="A list of errors in this form" />
+    <aura:attribute name="isComplete" type="Boolean" description="Is the form state currently valid for save" default="false" />
+    <aura:attribute name="showErrors" type="Boolean" default="false" description="Tells form controls to show their error values" />
+    <aura:attribute name="showSaveControls" type="Boolean" default="true" />
+    <aura:attribute name="isReadOnly" type="Boolean" default="false" access="global"/>
+    <aura:attribute name="isDirty" type="Boolean" default="false" />
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="sectionLabels" type="Object" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="FormDataResponse" event="c:FormDataResponse" action="{!c.handleFormDataResponse}" access="global" />
+    <aura:handler name="formDispatchDataEvent" event="c:FormDispatchDataEvent" action="{!c.handleDataDispatch}" access="global" />
+    <aura:handler name="formDispatchSaveEvent" event="c:FormDispatchSaveEvent" action="{!c.handleSaveDispatch}" access="global" />
+    <aura:handler name="nestedFormDataEvent" type="c:NestedFormDataEvent" action="{!c.handleIncomingNestedFormDataEvent}"/>
+    <aura:registerEvent name="nestedFormDataEvent" type="c:NestedFormDataEvent" />
+    <aura:method name="saveForm" access="public" action="{!c.handleSaveData}">
+        <aura:attribute name="callback" type="Object" description="!!HACK!! - actually passing callback function via object type"/>
+    </aura:method>
+    <aura:method name="validate" access="public" action="{!c.handleFormIsValid}"></aura:method>
+
+    <div aura:id="formControls">
+        <aura:iteration items="{!v.fc.formSections}" var="fs">
+            <div style="border: 1px solid; margin: 20px 0; padding: 20px">
+                <div class="slds-m-bottom_large">
+                    <c:ltngLabel customLabelKey="{!fs.Custom_Label__c}" staticLabel="{!fs.Name}" labelClass=""/>
+                </div>
+                <div class="slds-m-bottom_large">
+                    <aura:iteration items="{!fs.Form_Control__r}" var="fc" >
+                        <aura:if isTrue="{!fc.Type__c != 'Form'}">
+                            <c:ltngFormField fc="{!fc}" fd="{!v.fc.formData.Data__c}" showErrors="{!v.showErrors}" isReadOnly="{!v.isReadOnly}"/>
+                            <aura:set attribute="else">
+                                <c:ltngForm isReadOnly="{!v.isReadOnly}" formId="{!fc.Form_Lookup__c}" formDataId="{!v.formDataId}" showSaveControls="false" showErrors="{!v.showErrors}" />
+                            </aura:set>
+                        </aura:if>
+                    </aura:iteration>
+                </div>
+            </div>
+        </aura:iteration>
+    </div>
+</aura:component>

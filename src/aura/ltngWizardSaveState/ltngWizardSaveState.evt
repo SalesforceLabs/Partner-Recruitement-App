@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="Lightning Wizard Save State" >
+    <aura:attribute name="wizardData" type="Object"/>
+</aura:event>

@@ -1,0 +1,24 @@
+<aura:component access="global" extends="c:ltngBase">
+    <!-- Global Attributes -->
+    <aura:attribute name="wizardId" type="String" access="global" description="Unique Wizard Id" />
+    <aura:attribute name="title" type="String" access="global" />
+    <aura:attribute name="description" type="String" access="global" />
+    <aura:attribute name="pageMap" type="Object" description="Json based Metadata for list of wizard pages." access="global"></aura:attribute>
+    <aura:attribute name="startPage" type="String" access="global" description="Key for Start Page. Should be present in the page List." />
+    <aura:attribute name="wizardData" type="Object" description="Wizard State that gets passed to every Wizard Page" access="global" />
+    <aura:attribute name="wizardSessionData" type="Object" description="Wizard State that gets passed to every Wizard Page" access="global" />
+    <!-- Private Attributes -->
+    <aura:attribute name="currentPage" type="Object" access="private" />
+    <aura:attribute name="pageListInternal" type="List" description="Json based Metadata for list of wizard pages."></aura:attribute>
+    <aura:attribute name="wizardMetaData" type="Object" description="Wizard Metadata" />
+     <aura:registerEvent name="wizardSaveState" type="c:ltngWizardSaveState" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <div class="slds-container--center slds-container--large">
+        <aura:if isTrue="{! !empty(v.title)}">
+            <div class="slds-text-heading--large slds-text-align--center">
+                {!v.title}
+            </div>
+        </aura:if>
+        {!v.body}
+    </div>
+</aura:component>

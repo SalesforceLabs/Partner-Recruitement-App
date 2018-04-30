@@ -1,0 +1,18 @@
+<apex:page standardController="Flow_Data__c">
+    <apex:includeLightning />
+
+    <div id="flow_renderer" />
+
+    <script>
+        function initFlowRender() {
+
+            $Lightning.use("c:FlowRendererApp", function () {
+                $Lightning.createComponent("c:ltngDynamicFlow", {
+                    flowId : '{!Flow_Data__c.Id}',
+                    isInternalDetail : true
+                }, 'flow_renderer', function (cmp) {});
+            });
+        }
+        initFlowRender();
+    </script>
+</apex:page>

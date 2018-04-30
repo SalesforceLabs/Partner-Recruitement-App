@@ -1,0 +1,3 @@
+<design:component >
+	  <design:attribute name="formId" label="Form Data Id" description="Form Instance Id"/>
+</design:component>

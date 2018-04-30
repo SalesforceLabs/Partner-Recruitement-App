@@ -1,0 +1,43 @@
+<!--
+ - Created by tarren.anderson on 5/23/17.
+ -->
+<aura:component description="FormRenderer" access="global">
+    <aura:attribute name="formId" type="String" description="Form Data Id" access="global" />
+    <aura:attribute name="flowDataId" type="String" />
+    <aura:attribute name="fc" type="Object" description="form metadata object"/>
+    <aura:attribute name="formData" type="Object" description="current state of form data in UI"/>
+    <aura:attribute name="dataProvider" type="Aura.Component" required="false" description="A list of data provider components" access="global" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="FormDataResponse" event="c:FormDataResponse" action="{!c.handleFormDataResponse}" access="global" />
+    <aura:handler name="formDispatchDataEvent" event="c:FormDispatchDataEvent" action="{!c.handleDataDispatch}" access="global" />
+    <!--
+    <aura:registerEvent name="formRequestDataEvent" type="c:FormRequestDataEvent" />
+    <aura:registerEvent name="formSaveDataEvent" type="c:FormSaveDataEvent" />
+    -->
+    <!-- Add global error handling. -->
+    <div>
+        {!v.fc.formData.Form__r.Name}
+    </div>
+    <div>
+        {!v.fc.formData.Form__r.Description__c}
+    </div>
+    <div>
+        <aura:iteration items="{!v.fc.formSections}" var="fs">
+            <div style="border: 1px solid; margin: 20px 0; padding: 20px">
+                <div>
+                    {!fs.Name}
+                </div>
+                <div>
+                    {!fs.Description__c}
+                </div>
+                <aura:iteration items="{!fs.Form_Control__r}" var="fc">
+                    <c:FormFieldRenderer fc="{!fc}" fd="{!v.fc.formData.Data__c}"/>
+                </aura:iteration>
+            </div>
+        </aura:iteration>
+    </div>
+    <div>
+        <ui:button press="{!c.handleSaveData}" >Save/Update</ui:button>
+        <ui:button press="{!c.handleFormIsValid}">Tarren Temp Check</ui:button>
+    </div>
+</aura:component>

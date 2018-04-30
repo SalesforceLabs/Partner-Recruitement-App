@@ -1,0 +1,42 @@
+<aura:component access="global" implements="c:ltngWizardPage" extensible="true" extends="c:ltngBase">
+    <!-- Global Attributes -->
+    <aura:attribute name="nextButtonAction" type="Aura.Action" default="{!c.goForward}" description="Override Action for next Button." />
+    <aura:attribute name="backButtonAction" type="Aura.Action" default="{!c.goBack}" description="Override Action for back Button." />
+    <aura:attribute name="nextError" type="String"  description="Error Message if any"/>
+    <aura:attribute name="isComplete" type="Boolean" />
+    <aura:attribute name="successMessage" type="String" default=""/>
+    <aura:registerEvent name="wizardCompleteEvent" type="c:ltngWizardCompleteEvent" />
+    <div id="pageHeader">
+        <div class="slds-text-heading--small">{!v.title}</div>
+    </div>
+    <div id="pageBody">
+        {!v.body}
+    </div>
+    <div id="pageFooter">
+        <aura:if isTrue="{!v.showNavBar}">
+            <div style="clear:both">
+                <aura:if isTrue="{! !empty(v.prevPage)}">
+                    <lightning:button variant="neutral" onclick="{!v.backButtonAction}" label="{!v.backButtonLabel}" />
+                </aura:if>
+                <aura:if isTrue="{! !empty(v.nextPage)}">
+                    <div class="slds-float--right">
+                        <aura:if isTrue="{! !empty(v.nextError)}">
+                        <span  class="slds-text-color--error slds-p-horizontal--small">
+                            <lightning:icon iconName="utility:warning" variant="error" size="small"/> {!v.nextError}
+                        </span>
+                        </aura:if>
+                        <lightning:button variant="brand" onclick="{!v.nextButtonAction}" label="{!v.nextButtonLabel}" />
+                    </div>
+                </aura:if>
+                <aura:if isTrue="{!and(empty(v.nextPage), not(v.isComplete))}">
+                    <div class="slds-float--right">
+                        <lightning:button label="Complete" onclick="{!c.handleComplete}" variant="brand" />
+                    </div>
+                    <div class="slds-float--right slds-m-right_large">
+                        <lightning:button label="Save for Later" onclick="{!c.handleSaveForLater}" variant="brand" />
+                    </div>
+                </aura:if>
+            </div>
+        </aura:if>
+    </div>
+</aura:component>

@@ -1,0 +1,29 @@
+<!--
+ - Created by tarren.anderson on 5/25/17.
+ -->
+
+<aura:component description="FlowRenderer" access="global" >
+    <aura:attribute name="flowCode" type="String" default="" description="Obfuscated flow instance identifier"/>
+    <aura:attribute name="flowMeta" type="Object" description="Metadata for the flow object"/>
+    <aura:attribute name="flowState" type="Object" description="Current state of the flow"/>
+    <aura:attribute name="dataProvider" type="Aura.Component" required="false" description="Data provider component for the flow renderer" access="global" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="flowDispatchDataEvent" event="c:FlowDispatchDataEvent" action="{!c.handleDataDispatch}" access="global" />
+
+    <div>
+            {!v.flowMeta.flowMetaData.Name}
+    </div>
+    <div>
+        Flow Pages
+        <aura:iteration items="{!v.flowMeta.flowMetaData.Flow_Pages__r}" var="flowPage">
+            <aura:if isTrue="{!flowPage.Form__c != null}">
+                <div style="border: 1px solid; margin: 20px; padding: 20px;">
+                    <div>
+                        <span style="font-weight: bold">{!flowPage.Name}</span>
+                    </div>
+                    <c:FlowPageRenderer formId="{!flowPage.Form__c}" flowDataId="{!v.flowMeta.flowData.Id}" />
+                </div>
+            </aura:if>
+        </aura:iteration>
+    </div>
+</aura:component>

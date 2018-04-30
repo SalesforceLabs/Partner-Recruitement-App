@@ -1,0 +1,19 @@
+<apex:page standardController="Form_Data__c">
+    <apex:includeLightning />
+
+    <div id="form_renderer" />
+
+    <script>
+        function initFormRender() {
+
+            $Lightning.use("c:FormRendererApp", function () {
+                $Lightning.createComponent("c:ltngForm", {
+                    recordId : '{!Form_Data__c.Id}',
+                    isReadOnly: true,
+                    showSaveControls : false
+                }, 'form_renderer', function (cmp) {});
+            });
+        }
+        initFormRender();
+    </script>
+</apex:page>

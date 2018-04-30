@@ -1,0 +1,6 @@
+<aura:event type="COMPONENT" description="Event template">
+	 <aura:attribute name="type" type="String" description="nav_next, nav_prev, nav_goto"/>
+	 <aura:attribute name="page" type="String"/>
+	 <aura:attribute name="persistState" type="Boolean" default="false"/>
+
+</aura:event>

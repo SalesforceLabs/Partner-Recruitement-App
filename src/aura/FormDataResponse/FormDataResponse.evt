@@ -1,0 +1,8 @@
+<aura:event type="COMPONENT" description="FormDataResponse">
+    <aura:attribute name="val" type="String"/>
+    <aura:attribute name="type" type="String"/>
+    <aura:attribute name="visible" type="Boolean"/>
+    <aura:attribute name="controlId" type="String" />
+    <aura:attribute name="isValid" type="Boolean" />
+    <aura:attribute name="isDirty" type="Boolean" />
+</aura:event>

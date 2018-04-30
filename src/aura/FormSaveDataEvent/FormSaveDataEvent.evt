@@ -1,0 +1,8 @@
+<!--
+ - Created by tarren.anderson on 5/24/17.
+ -->
+
+<aura:event type="COMPONENT" description="FormSaveDataEvent">
+    <aura:attribute name="formId" type="String" access="public" default="" description="ID of the Form_Data__c object to be saved" />
+    <aura:attribute name="formData" type="Object" access="public" default="" description="Form JSON to be saved" />
+</aura:event>

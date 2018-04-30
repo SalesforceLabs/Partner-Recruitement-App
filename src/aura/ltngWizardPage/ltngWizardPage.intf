@@ -1,0 +1,16 @@
+<aura:interface description="Lightning Wizard Page Interface">
+    <aura:attribute name="pageKey" type="String"/>
+    <aura:attribute name="title" type="String" access="global" />
+    <aura:attribute name="description" type="String" description="Wizard Page Description" />
+    <aura:attribute name="nextButtonLabel" type="String" default="Next" description="Override label for next Button." />
+    <aura:attribute name="nextButtonAction" type="Aura.Action" description="Override Action for next Button." />
+    <aura:attribute name="backButtonLabel" type="String" default="Back" description="Override label for Back Button." />
+    <aura:attribute name="backButtonAction" type="Aura.Action" description="Override Action for back Button." />
+    <aura:attribute name="showNavBar" type="Boolean" default="true" />
+    <aura:attribute name="wizardMetadata" type="Object" />
+    <aura:attribute name="wizardData" type="Object" />
+    <aura:attribute name="wizardSessionData" type="Object" />
+    <aura:attribute name="nextPage" type="String"/>
+    <aura:attribute name="prevPage" type="String"/>
+	<aura:registerEvent name="wizardNavEvent" type="c:ltngWizardNavEvent"/>
+</aura:interface>

@@ -1,0 +1,4 @@
+<design:component >
+    <design:attribute name="formId" label="Form Id" description="Form Object Id"/>
+    <design:attribute name="formDataId" label="Form Data Id" description="Form Data Object Id" />
+</design:component>

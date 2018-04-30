@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="FormDispatchSaveEvent">
+    <aura:attribute name="saveResponse" type="Object" description="Object representing save operation result" />
+</aura:event>

@@ -1,0 +1,12 @@
+<aura:component description="FormFieldRenderer">
+    <aura:attribute name="fc" type="Object" description="Field Control Object" />
+    <aura:attribute name="fd" type="Object" description="Form Data Object" />
+    <aura:attribute name="fieldVal" type="String" />
+    <aura:registerEvent name="FormDataResponse" type="c:FormDataResponse" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.fieldVal}" action="{!c.handleValueChange}" />
+
+    <div>
+        <ui:inputText label="{!v.fc.Name}" value="{!v.fieldVal}" />
+    </div>
+</aura:component>

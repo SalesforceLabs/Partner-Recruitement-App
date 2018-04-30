@@ -1,0 +1,7 @@
+<!--
+ - Created by tarren.anderson on 5/24/17.
+ -->
+
+<aura:event type="COMPONENT" description="FormRequestDataEvent">
+    <aura:attribute name="formId" type="String" access="public" default="" description="Form_Data__c record being requested" />
+</aura:event>

@@ -1,0 +1,25 @@
+<aura:component description="FormFieldRenderer">
+    <aura:dependency resource="ui:inputCheckbox"/>
+    <aura:dependency resource="ui:outputRichText"/>
+    <aura:dependency resource="ui:outputText"/>
+
+    <aura:attribute name="fc" type="Object" description="Field Control Object" />
+    <aura:attribute name="fd" type="Object" description="Form Data Object" />
+    <aura:attribute name="fieldVal" type="String" />
+    <aura:attribute name="validity" type="Object" />
+    <aura:attribute name="showErrors" type="Boolean" />
+    <aura:attribute name="inputCmp" type="Aura.Component[]" description="Input Component" />
+    <aura:attribute name="checked" type="Boolean" description="Checkbox state" />
+    <aura:attribute name="isReadOnly" type="Boolean" />
+    <aura:attribute name="tempLabelAttr" type="String" />
+    <aura:registerEvent name="FormDataResponse" type="c:FormDataResponse" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.fieldVal}" action="{!c.handleValueChange}" />
+    <aura:handler name="change" value="{!v.checked}" action="{!c.handleToggleChange}" />
+    <aura:handler name="change" value="{!v.showErrors}" action="{!c.handleShowErrors}" />
+    <aura:handler name="change" value="{!v.validity}" action="{!c.handleValidityInit}" />
+
+    <div class="form-element" aura:id="form-controls">
+        {!v.inputCmp}
+    </div>
+</aura:component>

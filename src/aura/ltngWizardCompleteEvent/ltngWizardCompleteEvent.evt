@@ -1,0 +1,6 @@
+<!--
+ - Created by tarren.anderson on 6/8/17.
+ -->
+
+<aura:event type="COMPONENT" description="ltngWizardCompleteEvent">
+</aura:event>

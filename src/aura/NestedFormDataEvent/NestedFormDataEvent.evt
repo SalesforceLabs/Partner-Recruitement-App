@@ -1,0 +1,8 @@
+<!--
+ - Created by tarren.anderson on 5/30/17.
+ -->
+
+<aura:event type="COMPONENT" description="NestedFormDataEvent">
+    <aura:attribute name="formId" type="String" />
+    <aura:attribute name="formData" type="Object" />
+</aura:event>

@@ -1,0 +1,4 @@
+<aura:component extensible="true" abstract="true">
+	<aura:attribute name="debugMode" type="String" default="true"/>
+{!v.body}
+</aura:component>

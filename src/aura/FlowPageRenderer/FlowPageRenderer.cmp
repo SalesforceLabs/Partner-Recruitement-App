@@ -1,0 +1,9 @@
+<!--
+ - Created by tarren.anderson on 5/25/17.
+ -->
+
+<aura:component description="FlowPageRenderer">
+    <aura:attribute name="formId" type="String" access="public" />
+    <aura:attribute name="flowDataId" type="String" access="public" />
+    <c:FormRenderer formId="{!v.formId}" flowDataId="{!v.flowDataId}"/>
+</aura:component>

@@ -1,0 +1,11 @@
+<aura:component extends="c:ltngBaseWizardPage" access="global">
+    <aura:dependency resource="c:ltngForm" />
+    <aura:dependency resource="c:ltngFormField" />
+    <aura:attribute name="nextButtonAction" type="Aura.Action" default="{!c.goForward}" description="Override Action for next Button." />
+    <aura:attribute name="backButtonAction" type="Aura.Action" default="{!c.goBack}" description="Override Action for back Button." />
+    <aura:attribute name="formId" type="String"  />
+    <aura:attribute name="flowDataId" type="String" description="ID of flow data object" />
+    <aura:attribute name="formCmp" type="Aura.Component[]" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+	{!v.formCmp}
+</aura:component>

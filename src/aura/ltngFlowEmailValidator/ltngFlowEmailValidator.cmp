@@ -1,0 +1,14 @@
+<!--
+ - Created by tarren.anderson on 6/16/17.
+ -->
+
+<aura:component description="ltngFlowEmailValidator" extends="c:ltngBaseWizardPage" controller="DynamicFlowController">
+    <aura:attribute name="flowDataId" type="String" description="Id of flow data object" />
+    <aura:attribute name="emailInput" type="String" description="User input for email validation"/>
+    <aura:attribute name="nextButtonAction" type="Aura.Action" default="{!c.goForward}" description="Override Action for next Button." />
+
+    <div class="slds-m-bottom_xx-large">
+        <ui:inputText placeholder="Email Address" label="Please confirm your email address" class="field" value="{!v.emailInput}" />
+    </div>
+
+</aura:component>

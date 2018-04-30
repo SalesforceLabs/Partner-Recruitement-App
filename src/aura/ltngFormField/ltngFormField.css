@@ -1,0 +1,14 @@
+.THIS {
+}
+.THIS.form-element{
+    margin-bottom: 10px;
+}
+.THIS label.multibox{
+    display:inline-block;
+    margin-left: 10px;
+}
+.THIS input.multibox{
+    display:inline-block;
+    margin-left: 20px;
+    float:left;
+}

@@ -1,0 +1,23 @@
+<!--
+ - Created by tarren.anderson on 5/24/17.
+ -->
+<!-- Handle Data Change Event : Apex Data Provider -->
+<aura:component access="global" description="FormDataProvider" controller="FormDataController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" access="global" />
+    <!--
+    <aura:handler name="formSaveDataEvent" event="c:FormSaveDataEvent" action="{!c.handleSaveFormData}" access="global" />
+    <aura:handler name="formRequestDataEvent" event="c:FormRequestDataEvent" action="{!c.handleRequestFormData}" access="global" />
+    -->
+    <aura:registerEvent name="formDispatchDataEvent" type="c:FormDispatchDataEvent" />
+    <aura:registerEvent name="formDispatchSaveEvent" type="c:FormDispatchSaveEvent" />
+    <aura:method name="requestData" action="{!c.handleRequestFormData}" access="global">
+        <aura:attribute name="formId" type="String" />
+        <aura:attribute name="formDataId" type="String" />
+    </aura:method>
+    <aura:method name="saveData" action="{!c.handleSaveFormData}" >
+        <aura:attribute name="formId" type="String" />
+        <aura:attribute name="formDataId" type="String" />
+        <aura:attribute name="flowDataId" type="String" />
+        <aura:attribute name="formData" type="Object" />
+    </aura:method>
+</aura:component>
